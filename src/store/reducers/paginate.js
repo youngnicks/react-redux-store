@@ -13,7 +13,7 @@ const paginate = ({ types, mapActionToKey }) => {
     throw new Error('Expected mapActionToKey to be a function.')
   }
 
-  const [ requestType, successType, failureType ] = types
+  const [ requestType, successType, failureType ] = types;
 
   const updatePagination = (state = {
     isFetching: false,
@@ -41,7 +41,7 @@ const paginate = ({ types, mapActionToKey }) => {
           isFetching: false
         }
       default:
-        return state
+        return state;
     }
   }
 
@@ -53,15 +53,16 @@ const paginate = ({ types, mapActionToKey }) => {
       case failureType:
         const key = mapActionToKey(action)
         if (typeof key !== 'string') {
-          throw new Error('Expected key to be a string.')
+          throw new Error('Expected key to be a string.');
         }
         return { ...state,
+          currentKey: key,
           [key]: updatePagination(state[key], action)
         }
       default:
-        return state
+        return state;
     }
   }
 }
 
-export default paginate
+export default paginate;

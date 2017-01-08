@@ -4,7 +4,7 @@ import { hashHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Root from './app/Root';
+import Root from './Root';
 import configureStore from './store/configureStore';
 import './index.css';
 
