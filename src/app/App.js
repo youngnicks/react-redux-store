@@ -4,6 +4,7 @@ import { toggleDrawer } from './actions';
 import { Link } from 'react-router';
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
+import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 
 class App extends Component {
@@ -22,8 +23,14 @@ class App extends Component {
                 docked={false}
                 onRequestChange={this.props.toggleDrawer}
                 open={this.props.drawerOpen}>
-          <MenuItem onTouchTap={this.props.toggleDrawer}><Link to="/">Home</Link></MenuItem>
-          <MenuItem onTouchTap={this.props.toggleDrawer}><Link to="/requests">Requests</Link></MenuItem>
+          <Menu>
+            <MenuItem onTouchTap={this.props.toggleDrawer}>
+              <Link to="/">Home</Link>
+            </MenuItem>
+            <MenuItem onTouchTap={this.props.toggleDrawer}>
+              <Link to="/requests">Requests</Link>
+            </MenuItem>
+          </Menu>
         </Drawer>
 
         {this.props.children}
@@ -34,7 +41,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    drawerOpen: state.app.get('drawerOpen')
+    drawerOpen: state.app.drawerOpen
   }
 }
 
